@@ -33,7 +33,7 @@ function App() {
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Stopwatch</h1>
-      <h2>{formatTime(time)}</h2>
+      <h2>Time: {formatTime(time)}</h2>
       <button onClick={start} style={{ margin: "5px" }}>
         {!intervalId ? "Start" : "Stop"}
       </button>
