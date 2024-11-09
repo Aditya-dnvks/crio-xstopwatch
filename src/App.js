@@ -11,6 +11,9 @@ function App() {
         setTime((prevTime) => prevTime + 1);
       }, 1000);
       setIntervalId(id);
+    } else {
+      clearInterval(intervalId);
+      setIntervalId(null);
     }
   };
 
@@ -24,10 +27,7 @@ function App() {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 
-    return (
-      `${minutes < 10 ? "0" + minutes : minutes}:` +
-      `${seconds < 10 ? "0" + seconds : seconds}`
-    );
+    return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
   };
 
   return (
@@ -35,7 +35,7 @@ function App() {
       <h1>Stopwatch</h1>
       <h2>{formatTime(time)}</h2>
       <button onClick={start} style={{ margin: "5px" }}>
-        Start
+        {!intervalId ? "Start" : "Stop"}
       </button>
       <button onClick={reset} style={{ margin: "5px" }}>
         Reset
